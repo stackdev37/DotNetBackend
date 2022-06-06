@@ -1,0 +1,43 @@
+{
+  //#if Auth
+  "JwtBearer": {
+    "Audience": "",
+    "Authority": ""
+  },
+  "OpenApiSecurityScheme": {
+    "Type": "OAuth2",
+    "Flow": "Implicit",
+    "Flows": {
+      "Implicit": {
+        "AuthorizationUrl": "https://localhost/"
+      }
+    }
+  },
+  "OAuth2ClientSettings": {
+    "AppName": "Name",
+    "ClientId": "client-id"
+  },
+  //#endif
+  //#if Web
+  "AllowedHosts": "*",
+  "RequestTracingMiddleware": {
+    "EnableFor": [
+      "/api/.*"
+    ]
+  },
+  //#endif
+  "Logging": {
+    "LogLevel": {
+      //#if Web
+      "AspNetCoreRequestTracing.RequestTracingMiddleware": "Trace",
+      //#endif
+      "System.Net.Http.HttpClient": "Trace",
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Backend": {
+    "EnableSwagger": true
+  }
+}

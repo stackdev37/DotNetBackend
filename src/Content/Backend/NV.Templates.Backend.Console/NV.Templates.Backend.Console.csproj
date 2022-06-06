@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <UserSecretsId>20403522-635f-44fd-ab82-8a754fe59c64</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="McMaster.Extensions.Hosting.CommandLine" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\ATTRIBUTIONS.txt" Link="Properties\ATTRIBUTIONS.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NV.Templates.Backend.Core\NV.Templates.Backend.Core.csproj" />
+  </ItemGroup>
+
+</Project>

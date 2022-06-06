@@ -1,0 +1,156 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "nventive",
+  "name": "nventive Backend template",
+  "identity": "NV.Templates.Backend",
+  "groupIdentity": "NV.Templates.Backend",
+  "shortName": "nv-backend",
+  "classifications": ["Backend"],
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "NV.Templates.Backend",
+  "preferNameDirectory": true,
+  "symbols": {
+    "Company": {
+      "type": "parameter",
+      "datatype": "string",
+      "defaultValue": "MyCompany",
+      "replaces": "CompanyName",
+      "description": "The name of the company which determines the assembly company and copyright information."
+    },
+    "RestApi": {
+      "type": "parameter",
+      "description": "Adds Rest API support",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "Functions": {
+      "type": "parameter",
+      "description": "Adds Azure Functions support",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "Console": {
+      "type": "parameter",
+      "description": "Adds Console support",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "SPA": {
+      "type": "parameter",
+      "description": "Adds Single Page Application support",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "Auth": {
+      "type": "parameter",
+      "description": "Add Authentication support",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "Azure": {
+      "type": "parameter",
+      "description": "Adds Azure ARM Template and DevOps Pipelines",
+      "datatype": "bool",
+      "defaultValue": "false"
+    },
+    "Web": {
+      "type": "computed",
+      "dataType": "bool",
+      "value": "(RestApi || SPA)"
+    },
+    "HttpPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTP endpoint in launchSettings.json."
+    },
+    "HttpPortGenerated": {
+      "type": "generated",
+      "generator": "port"
+    },
+    "HttpPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "HttpPort",
+        "fallbackVariableName": "HttpPortGenerated"
+      },
+      "replaces": "49370"
+    },
+    "HttpsPort": {
+      "type": "parameter",
+      "datatype": "integer",
+      "description": "Port number to use for the HTTPS endpoint in launchSettings.json."
+    },
+    "HttpsPortGenerated": {
+      "type": "generated",
+      "generator": "port",
+      "parameters": {
+        "low": 44300,
+        "high": 44399
+      }
+    },
+    "HttpsPortReplacer": {
+      "type": "generated",
+      "generator": "coalesce",
+      "parameters": {
+        "sourceVariableName": "HttpsPort",
+        "fallbackVariableName": "HttpsPortGenerated"
+      },
+      "replaces": "44314"
+    },
+    "UserSecretsId": {
+      "type": "generated",
+      "generator": "guid",
+      "replaces": "20403522-635f-44fd-ab82-8a754fe59c64",
+      "parameters": {
+        "format": "D"
+      }
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "exclude": [
+            "**/[Bb]in/**",
+            "**/[Oo]bj/**",
+            ".template.config/**/*",
+            "**/*.filelist",
+            "**/*.user",
+            "**/*.lock.json",
+            "**/package-lock.json",
+            ".vs/**",
+            ".git/**"
+          ]
+        },
+        {
+          "condition": "(!RestApi)",
+          "exclude": ["**/*RestApi*/**", "**/*OpenApi*/**"]
+        },
+        {
+          "condition": "(!Functions)",
+          "exclude": ["**/*Functions*/**"]
+        },
+        {
+          "condition": "(!SPA)",
+          "exclude": ["**/*ClientApp*/**"]
+        },
+        {
+          "condition": "(!Console)",
+          "exclude": ["**/*Console*/**"]
+        },
+        {
+          "condition": "(!Web)",
+          "exclude": ["**/*Web*/**"]
+        },
+        {
+          "condition": "(!Azure)",
+          "exclude": ["azure*"]
+        }
+      ]
+    }
+  ]
+}

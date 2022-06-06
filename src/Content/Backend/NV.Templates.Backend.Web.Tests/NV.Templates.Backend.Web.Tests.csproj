@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <UserSecretsId>20403522-635f-44fd-ab82-8a754fe59c64</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants></DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HttpTracing" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Refit" Version="5.1.54" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NV.Templates.Backend.Core.Tests\NV.Templates.Backend.Core.Tests.csproj" />
+    <ProjectReference Include="..\NV.Templates.Backend.Core\NV.Templates.Backend.Core.csproj" />
+    <ProjectReference Include="..\NV.Templates.Backend.Web\NV.Templates.Backend.Web.csproj" />
+  </ItemGroup>
+
+</Project>
